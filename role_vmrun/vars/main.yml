@@ -1,0 +1,25 @@
+---
+# vars file for role_vmrun
+vmrun_path: "/Applications/VMware Fusion.app/Contents/Public/vmrun"
+vmrun_type: fusion
+# vmrun_state ----------------------------------------------------
+# start                    Path to vmx file     Start a VM or Team
+#                         [gui|nogui]
+#
+# stop                     Path to vmx file     Stop a VM or Team
+#                         [hard|soft]
+#
+# reset                    Path to vmx file     Reset a VM or Team
+#                         [hard|soft]
+#
+# suspend                  Path to vmx file     Suspend a VM or Team
+#                         [hard|soft]
+#
+# pause                    Path to vmx file     Pause a VM
+#
+# unpause                  Path to vmx file     Unpause a VM
+# ----------------------------------------------------------------
+
+vmrun_state: start # [ start | stop | reset | suspend | pause | unpause ]
+vmx_file_list: []
+vmrun_parameter: ""

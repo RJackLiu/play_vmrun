@@ -1,0 +1,14 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+  become: no
+  roles:
+    - role: role_vmrun
+      vmrun_state: start # [ start | stop | reset | suspend | pause | unpause ]
+      vmx_directory: "/Users/jacliu/Virtual Machines.localized/"
+      vmx_file_list: 
+        - Tower1.vmwarevm/Tower1.vmx
+        - workstation-01_172.16.112.70-rhel7.6.vmwarevm/workstation-01_172.16.112.70-rhel7.6.vmx
+      vmrun_parameter: "nogui"
+      
