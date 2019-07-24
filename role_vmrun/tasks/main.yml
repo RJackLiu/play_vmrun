@@ -5,5 +5,4 @@
       cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ vmx_directory }}{{ item }}" {{ vmrun_parameter }}
   args:
       executable: /bin/bash
-      chdir: /Applications/VMware Fusion.app/Contents/Public
   loop: "{{ vmx_file_list }}"
