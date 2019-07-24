@@ -6,3 +6,20 @@
   args:
       executable: /bin/bash
   loop: "{{ vmx_file_list }}"
+  when: vmx_file_list != "all"
+  
+- name: "({{ ROLE_ID }} - 000.02) To get vmrun list"
+  shell: >
+      cd "{{ vmrun_path }}" && ./vmrun list | grep -vi "tower\|total running vms"
+  args:
+      executable: /bin/bash
+  register: listIsAll
+  when: vmx_file_list == "all"
+
+- name: "({{ ROLE_ID }} - 000.03) To execute vmrun for all"
+  shell: >
+      cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ vmx_directory }}{{ item }}" {{ vmrun_parameter }}
+  args:
+      executable: /bin/bash
+  loop: "{{ listIsAll.stdout_lines }}"
+  when: vmx_file_list == "all"
