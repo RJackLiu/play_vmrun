@@ -2,7 +2,7 @@
 # tasks file for role_vmrun
 - name: "({{ ROLE_ID }} - 000.01) To execute vmrun command"
   shell: >
-      vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ vmx_directory }}{{ item }}" {{ vmrun_parameter }}
+      cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ vmx_directory }}{{ item }}" {{ vmrun_parameter }}
   args:
       executable: /bin/bash
       chdir: /Applications/VMware Fusion.app/Contents/Public
