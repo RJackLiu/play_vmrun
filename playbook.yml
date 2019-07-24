@@ -1,7 +1,7 @@
 ---
 - hosts: all
   gather_facts: no
-  become: no
+  become: yes
   roles:
     - role: role_vmrun
       vmrun_state: start # [ start | stop | reset | suspend | pause | unpause ]
