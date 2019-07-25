@@ -6,7 +6,7 @@
           cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ item }}" {{ vmrun_start_parameter }} {{ vmrun_stop_parameter }} {{ vmrun_clone_parameter }}
       args:
           executable: /bin/bash
-      loop: "{{ vmx_start_list }}{{ vmx_stop_list }}{{ vmx_clone_list }}"
+      loop: "{{ vmx_start_list + vmx_stop_list + vmx_clone_list }}"
   when: vmx_stop_list[0] != "all"
 
 - name: stop all VMs
