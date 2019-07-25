@@ -9,17 +9,18 @@
       loop: "{{ vmx_start_list }}{{ vmx_stop_list }}{{ vmx_clone_list }}"
   when: vmx_stop_list != "all"
 
-- block:
+- name: stop all VMs
+  block:
     - name: "({{ ROLE_ID }} - 000.02) To get vmrun list"
       shell: >
-          cd "{{ vmrun_path }}" && ./vmrun list | grep -vi "tower\|total running vms" |sed 's!{{ vmx_directory }}!!g'
+          cd "{{ vmrun_path }}" && ./vmrun list | grep -vi "tower\|total running vms"
       args:
           executable: /bin/bash
       register: listIsAll
 
     - name: "({{ ROLE_ID }} - 000.03) To execute vmrun for all"
       shell: >
-          cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ vmx_directory }}{{ item }}" {{ vmrun_parameter }}
+          cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} stop "{{ item }}" {{ vmrun_stop_parameter }}
       args:
           executable: /bin/bash
       loop: "{{ listIsAll.stdout_lines }}"
