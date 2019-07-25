@@ -3,10 +3,10 @@
 - block:
     - name: "({{ ROLE_ID }} - 000.01) To execute vmrun command"
       shell: >
-          cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ vmx_directory }}{{ item }}" {{ vmrun_parameter }}
+          cd "{{ vmrun_path }}" && ./vmrun -T {{ vmrun_type }} {{ vmrun_state }} "{{ item.0 }}" "{{ item.1 }}" {{ vmrun_start_parameter }} {{ vmrun_stop_parameter }} {{ vmrun_clone_parameter }}
       args:
           executable: /bin/bash
-      loop: "{{ vmx_file_list | list }}"
+      loop: "{{ vmx_file_list | zip(clone_dst_list) | list }}"
   when: vmx_file_list != "all"
 
 - block:
