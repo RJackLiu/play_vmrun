@@ -39,9 +39,9 @@ vmrun_type: fusion
 #                          [-cloneName=Name]
 
 vmrun_state: start # [ start | stop | reset | suspend | pause | unpause | clone ]
-vmx_start_list: []
-vmx_stop_list: []
-vmx_clone_list: []
+vmx_start_list: ""
+vmx_stop_list: ""
+vmx_clone_list: ""
 vmrun_start_parameter: ""
 vmrun_stop_parameter: ""
 vmrun_clone_parameter: ""
