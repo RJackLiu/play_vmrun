@@ -7,7 +7,7 @@
       args:
           executable: /bin/bash
       loop: "{{ vmx_start_list + vmx_stop_list + vmx_clone_list }}"
-  when: vmx_stop_list[0] != "all"
+  when: vmx_stop_list | length > 0 and vmx_stop_list[0] != "all"
 
 - name: stop all VMs
   block:
@@ -24,4 +24,4 @@
       args:
           executable: /bin/bash
       loop: "{{ listIsAll.stdout_lines }}"
-  when: vmx_stop_list[0] == "all"
+  when: vmx_stop_list | length > 0 and vmx_stop_list[0] == "all"
