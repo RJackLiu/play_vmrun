@@ -20,7 +20,25 @@ vmrun_type: fusion
 # unpause                  Path to vmx file     Unpause a VM
 # ----------------------------------------------------------------
 
-vmrun_state: start # [ start | stop | reset | suspend | pause | unpause ]
+# GENERAL COMMANDS         PARAMETERS           DESCRIPTION
+# ----------------         ----------           -----------
+# list                                          List all running VMs
+#
+# upgradevm                Path to vmx file     Upgrade VM file format, virtual hw
+# 
+# installTools             Path to vmx file     Install Tools in Guest
+#
+# checkToolsState          Path to vmx file     Check the current Tools state
+#
+# deleteVM                 Path to vmx file     Delete a VM
+#
+# clone                    Path to vmx file     Create a copy of the VM
+#                          Path to destination vmx file
+#                          full|linked
+#                          [-snapshot=Snapshot Name]
+#                          [-cloneName=Name]
+
+vmrun_state: start # [ start | stop | reset | suspend | pause | unpause | clone ]
 vmx_start_list: []
 vmx_stop_list: []
 vmx_clone_list: []
